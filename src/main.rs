@@ -19,6 +19,7 @@ use windows::Win32::Graphics::Gdi::{
     MonitorFromWindow, MONITOR_DEFAULTTONEAREST, GetMonitorInfoW, MONITORINFO, 
     RedrawWindow, RDW_INVALIDATE, RDW_UPDATENOW, RDW_ALLCHILDREN,
 };
+use windows::Win32::Graphics::Dwm::{DwmGetWindowAttribute, DWMWA_EXTENDED_FRAME_BOUNDS};
 
 // --- App State ---
 
@@ -69,15 +70,34 @@ fn perform_snap(key: u32) {
         // 3. Functional Calculation (No Side Effects)
         let target = engine::calculate_snap(key, cycle, current_rect, work_area);
 
-        // 4. Execution (Side Effects Isolated)
+        // 4. Border Compensation (Invisible resize borders adjustment)
+        let mut extended_rect = RECT::default();
+        let _ = DwmGetWindowAttribute(
+            hwnd,
+            DWMWA_EXTENDED_FRAME_BOUNDS,
+            &mut extended_rect as *mut RECT as *mut _,
+            std::mem::size_of::<RECT>() as u32,
+        );
+
+        let border_left = extended_rect.left - current_rect.left;
+        let border_top = extended_rect.top - current_rect.top;
+        let border_right = current_rect.right - extended_rect.right;
+        let border_bottom = current_rect.bottom - extended_rect.bottom;
+
+        let final_left = target.left - border_left;
+        let final_top = target.top - border_top;
+        let final_width = (target.right - target.left) + border_left + border_right;
+        let final_height = (target.bottom - target.top) + border_top + border_bottom;
+
+        // 5. Execution (Side Effects Isolated)
         let _ = SendMessageW(hwnd, WM_SETREDRAW, Some(WPARAM(0)), Some(LPARAM(0)));
         let _ = SetWindowPos(
             hwnd, 
             None, 
-            target.left, 
-            target.top, 
-            target.right - target.left, 
-            target.bottom - target.top, 
+            final_left, 
+            final_top, 
+            final_width, 
+            final_height, 
             SWP_NOSENDCHANGING | SWP_NOCOPYBITS | SWP_NOZORDER | SWP_NOACTIVATE | SWP_FRAMECHANGED
         );
         let _ = SendMessageW(hwnd, WM_SETREDRAW, Some(WPARAM(1)), Some(LPARAM(0)));
