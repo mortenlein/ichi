@@ -2,7 +2,7 @@
   <img src="icon.png" width="160" alt="Ichi Logo">
 </p>
 
-<h1 align="center">ICHI</h1>
+<h1 align="center">ICHI ・ イチ</h1>
 
 <p align="center">
   <strong>The definitive zero-flicker window snapping utility for Windows.</strong><br>
