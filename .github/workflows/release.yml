@@ -22,10 +22,17 @@ jobs:
       - name: Build Release
         run: cargo build --release
 
-      - name: Upload Binary to Release
+      - name: Build Installer
+        shell: pwsh
+        run: |
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" ichi.iss
+
+      - name: Upload Binary and Installer to Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
-          files: target/release/ichi.exe
+          files: |
+            target/release/ichi.exe
+            Output/IchiSetup.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

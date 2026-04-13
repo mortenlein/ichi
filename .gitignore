@@ -16,6 +16,7 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+Output/
 *.local
 
 # Editor directories and files
@@ -28,3 +29,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+ichi_hinomaru_logo_1776067137884.png
