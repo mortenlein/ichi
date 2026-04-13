@@ -1,4 +1,26 @@
-# Ichi
+<p align="center">
+  <img src="icon.png" width="160" alt="Ichi Logo">
+</p>
+
+<h1 align="center">ICHI</h1>
+
+<p align="center">
+  <strong>The definitive zero-flicker window snapping utility for Windows.</strong><br>
+  <em>Built in Rust for power, precision, and performance.</em>
+</p>
+
+<p align="center">
+  <a href="https://github.com/mortenlein/ichi/releases/latest">
+    <img src="https://img.shields.io/github/v/release/mortenlein/ichi?style=for-the-badge&color=D0021B" alt="Latest Release">
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/github/license/mortenlein/ichi?style=for-the-badge&color=333" alt="License">
+  </a>
+  <img src="https://img.shields.io/badge/Language-Rust-black?style=for-the-badge&logo=rust" alt="Rust">
+</p>
+
+---
+
 
 **Ichi** is a high-performance, minimalist window-snapping utility for Windows, rebuilt from the ground up in Rust. It provides a lightweight, flicker-free alternative to legacy window managers, inspired by the classic WinSplit Revolution.
 
