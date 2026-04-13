@@ -22,7 +22,7 @@
 ---
 
 
-**Ichi** is a high-performance, minimalist window-snapping utility for Windows, rebuilt from the ground up in Rust. It provides a lightweight, flicker-free alternative to legacy window managers, inspired by the classic WinSplit Revolution.
+**Ichi** (イチ, meaning **"One"** or **"#1"**) is a high-performance, minimalist window-snapping utility for Windows, rebuilt from the ground up in Rust. It provides a lightweight, flicker-free alternative to legacy window managers, inspired by the classic WinSplit Revolution. Its name reflects its singular focus: to be the fastest and most efficient tool in its class.
 
 ## 🚀 Key Features
 
