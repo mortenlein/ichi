@@ -9,6 +9,9 @@ jobs:
   release:
     name: Release Windows Binary
     runs-on: windows-latest
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
