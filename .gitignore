@@ -31,3 +31,6 @@ Output/
 *.sw?
 ichi_hinomaru_logo_1776067137884.png
 Gemini.md
+.antigravityrc
+mcp-config.json
+opencode.json
